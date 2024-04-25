@@ -5,21 +5,14 @@ const addromButton = document.querySelector("#addrom")
 const stop = document.querySelector('#stop')
 
 var config = {
-    "x": 300,
+    "x": 800,
     "y": 20,
     "gap":30,
     "width":300,
     "height":100
 }
 
-// let kwadrat = rc.rectangle(800,15,300,300, {fill:'rgba(255,0,0,0.5)', fillStyle:'solid'})
-// svg.appendChild(kwadrat)
-
-// kwadrat.addEventListener('click',()=>{
-//     console.log("1")
-// })
-
-let elipse = rc.ellipse(config.x*3/2, config.y+config.height/2, config.width, config.height, {fill:'rgba(255,0,0,0.5)', fillStyle:'solid'})
+let elipse = rc.ellipse(config.x+config.width/2, config.y+config.height/2, config.width, config.height, {fill:'rgba(255,0,0,0.5)', fillStyle:'solid'})
 svg.appendChild(elipse)
 
 // funkcja do kwadratów
@@ -56,6 +49,7 @@ function drawLisener(x, y, width, height, gap){
     config.y=y+gap+height
 }
 
+// funkcja bloku stop
 stop.addEventListener('click',()=>{
     drawStop(config.x, config.y, config.width, config.height, config.gap)
 })
@@ -64,9 +58,10 @@ function drawStop(x, y, width, height, gap){
     let line = rc.line(x+width/2, y+height, x+width/2, y+height+gap)
     svg.appendChild(line)
 
-    let elipse = rc.ellipse(config.x*3/2, config.y+config.height/2+height+gap, config.width, config.height, {fill:'rgba(255,0,0,0.5)', fillStyle:'solid'})
+    let elipse = rc.ellipse(config.x+width/2, config.y+config.height/2+height+gap, config.width, config.height, {fill:'rgba(255,0,0,0.5)', fillStyle:'solid'})
     svg.appendChild(elipse)
 
+    // ukrywanie wszystkich przycisków
     addkwButton.style.display="none"
     addromButton.style.display="none"
     stop.style.display='none'
